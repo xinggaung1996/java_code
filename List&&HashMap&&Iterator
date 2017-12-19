@@ -1,0 +1,50 @@
+package Ex_4;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+public class ListTest2 
+{
+
+	public static void main(String[] args) 
+	{
+		// TODO Auto-generated method stub
+		//创建一个链表
+		List<Character> cs=new ArrayList<>();
+		//向链表里添加元素。
+		cs.add('a');
+		cs.add('b');
+		cs.add('a');
+		cs.add('c');
+		cs.add('b');
+		cs.add('a');
+		cs.add('a');
+		cs.add('b');
+		//创建一个Map 用 HashMap 进行查找。
+		Map<Character,Integer> resultMap=new HashMap<>();
+		//用Iterator 进行遍历。
+		Iterator<Character> it=cs.iterator();
+//		循环条件看是否下一个为空 为空则跳出循环，集合便利结束。
+		while(it.hasNext())
+		{
+			Character c=it.next();
+			//判断resultMap链表里是否出现过key=‘c’ 
+//			如果没有出现过 把key=‘c’values=1，添加到resultMap中去。
+			if(!resultMap.containsKey(c))
+			{
+				resultMap.put(c, 1);
+			}
+			//如果出现过则返回该键（key）映射的值（values）用对象.get();
+			else{
+				int num=resultMap.get(c);
+		    	num++;
+			    resultMap.put(c, num);
+			}
+		}	
+		//打印resultMap的<key,values>
+		System.out.println(resultMap);
+	}
+}
